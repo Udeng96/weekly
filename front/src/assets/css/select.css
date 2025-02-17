@@ -1,0 +1,24 @@
+.rank_select__control,
+.rank_select__control--is-focused,
+.rank_select__control--menu-is-open{
+    height:90%;
+    padding: 0 5px;
+    border-radius: 30px !important;
+    border-style: unset !important;
+    min-height: unset !important;
+    border-color: transparent !important;
+    box-shadow: unset !important;
+    /*border-color: ;*/
+}
+
+.rank_select__input{
+    min-width: unset;
+    outline: unset;
+    caret-color: transparent;
+    margin: 0;
+}
+
+.rank_select__indicators{
+    height: 27px;
+    /*padding-left: 27px;*/
+}
