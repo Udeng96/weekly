@@ -94,18 +94,22 @@
     width: calc(100% - 30px);
     height: 100%;
     padding: 20px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .content{
     border: 1px solid black;
 }
 
-.content.todo{
+.content.todo,
+.content.check{
     width:30%;
     height: 100%;
 }
 
-.content.todo .week{
+.content.todo .week,
+.content.check .week{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -135,7 +139,7 @@
 
 .list_wrap .list_item{
     width: 100%;
-    height: 130px;
+    height: 170px;
     border: 2px solid rgba(26, 26, 26, 0.5);
     border-radius: 10px;
     padding: 10px;
@@ -161,6 +165,180 @@
 .list_wrap .list_item .header .add_btn:hover{
     color: #535bf2;
     opacity: 1;
+}
+
+.list_wrap .list_item .header .add_btn:focus-visible,
+.list_wrap .list_item .header .add_btn:focus{
+    outline: none;
+}
+
+.list_wrap .list_item .body{
+    height: calc(100% - 18%);
+    border: 1px solid #747bff;
+    padding: 10px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.list_wrap .list_item .body::-webkit-scrollbar {
+    width: 7px;
+    background-color: transparent;
+
+}
+
+.list_wrap .list_item .body::-webkit-scrollbar-track {
+    margin: 9px 0;
+    border-radius: 0;
+    border-top: none;
+    border-bottom: none;
+}
+
+.list_wrap .list_item .body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #4D5580;
+
+}
+
+.list_wrap .list_item .body::-webkit-scrollbar-thumb:hover {
+    background-color: #747DA6;
+}
+
+.list_wrap .list_item .body .body_item{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    border-radius: 10px;
+    padding: 0 5px;
+    gap : 6px;
+    margin-bottom: 5px;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.list_wrap .list_item .body .body_item:hover{
+    background-color: rgba(103, 164, 255, 0.47);
+    cursor: pointer;
+}
+
+.list_wrap .list_item .body .body_item > p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.list_wrap .list_item .body .body_item > p > span{
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.list_wrap .list_item .body .body_item > p:nth-child(1){
+    width: 15px;
+}
+.list_wrap .list_item .body .body_item >p:nth-child(2){
+    width: 25px;
+}
+.list_wrap .list_item .body .body_item >p:nth-child(3){
+    width: 150px;
+
+}
+.list_wrap .list_item .body .body_item >p:nth-child(4){
+    width : 100px;
+}
+.list_wrap .list_item .body .body_item >p:nth-child(5){
+    width : 110px;
+}
+.list_wrap .list_item .body .body_item >button{
+    width : 30px;
+    height: 30px;
+    background-image: url("../../image/user/btn_eventHistory_calendar_next_normal.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.list_wrap .list_item .body .body_item >button:hover{
+    background-image: url("../../image/user/btn_eventHistory_calendar_next_hover.svg");
+
+}
+
+.list_wrap .list_item .body .body_item >button:focus-visible,
+.list_wrap .list_item .body .body_item >button:focus{
+    outline: none;
+}
+
+
+.list_wrap .list_item .body .body_item .time{
+    font-weight: 500;
+}
+
+.list_wrap .list_item .body .body_item .time.morning{
+    color: #e11c5a;
+}
+
+.list_wrap .list_item .body .body_item .time.afternoon{
+    color: #646cff;
+}
+
+.time_box{
+    width: 100%;
+    height: 45%;
+}
+
+.time_box .header{
+    width:100%;
+    height: 10%;
+    border-bottom: 1px solid cornflowerblue;
+    padding : 0 20px;
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.time_box .header.am{
+    color: #e11c5a;
+}
+
+.time_box .header.pm{
+    color: #646cff;
+}
+
+.time_box .body{
+    width: 100%;
+    height: 90%;
+    padding : 3%;
+}
+
+.time_box .body .work_box{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid #0C0922;
+    padding : 10px;
+}
+
+.time_box .body .work_box .level_area{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    height: auto;
+}
+
+.time_box .body .work_box .level_area .level_box{
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.time_box .body .work_box .level_area .level_box .title{
+    margin-bottom: 3px;
 }
 
 
