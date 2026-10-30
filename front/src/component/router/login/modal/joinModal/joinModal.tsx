@@ -6,6 +6,13 @@ import {Option, UserType} from "../../../../data/type/loginType";
 import {useMutation} from "@tanstack/react-query";
 import {saveUserInfo} from "../../../../data/query/api/login/loginApi";
 
+const allowedEmailDomain = import.meta.env.VITE_ALLOWED_EMAIL_DOMAIN || 'example.com';
+const isAllowedEmail = (email: string): boolean => {
+    const at = email.lastIndexOf('@');
+    return at > 0 && /^[a-zA-Z0-9._%+-]+$/.test(email.slice(0, at))
+        && email.slice(at + 1).toLowerCase() === allowedEmailDomain.toLowerCase();
+};
+
 const JoinModal = () => {
 
 
@@ -24,7 +31,8 @@ const JoinModal = () => {
         tel: ""
     });
 
-    const handleRank = (e: Option) => {
+    const handleRank = (e: Option | null) => {
+        if (!e) return;
         setSelectRank(e);
         setParam({...param, rank: e.value})
     }
@@ -34,7 +42,6 @@ const JoinModal = () => {
         setParam({
             id: "",
             pwd: "",
-            pwdchk: "",
             name: "",
             birth: "",
             depart: "",
@@ -42,6 +49,7 @@ const JoinModal = () => {
             email: "",
             tel: ""
         })
+        setPwdChk('');
         setSelectRank({label: '전체', value: 'all'});
     }
 
@@ -144,12 +152,12 @@ const JoinModal = () => {
                             <div className={"modal_body_box_area"}>
                                 <p className={"modal_body_box_nm"}>회사메일</p>
                                 <input className={"modal_body_box_input"} type={"email"}
-                                       placeholder={"eseict.com 도메인만 가능"}
+                                       placeholder={`${allowedEmailDomain} 도메인만 가능`}
                                        value={param.email}
                                        onChange={(e) => setParam({...param, email: e.target.value})}/>
                             </div>
                             <span
-                                className={"modal_body_box_msg"}>{/[a-zA-Z0-9._%+-]+@eseict\.com$/.test(param.email) || param.email === "" ? '' : '이메일 형식이 잘못됐습니다.'}</span>
+                                className={"modal_body_box_msg"}>{isAllowedEmail(param.email) || param.email === "" ? '' : '이메일 형식이 잘못됐습니다.'}</span>
 
                         </div>
 
@@ -167,7 +175,7 @@ const JoinModal = () => {
                         <div className={"modal_body_box"}>
                             <div className={"modal_body_box_area"}>
                                 <button className={"modal_join_btn"}
-                                        disabled={!/[0-9]{3}-[0-9]{4}-[0-9]{4}/.test(param.tel) || !/[a-zA-Z0-9._%+-]+@eseict\.com$/.test(param.email) || !/^\d{6}$/.test(param.birth) || pwdChk !== param.pwd}
+                                        disabled={!/[0-9]{3}-[0-9]{4}-[0-9]{4}/.test(param.tel) || !isAllowedEmail(param.email) || !/^\d{6}$/.test(param.birth) || pwdChk !== param.pwd}
                                         onClick={() => handleJoinBtn()}>등록
                                 </button>
                             </div>

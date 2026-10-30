@@ -1,25 +1,11 @@
 {
   "files": [],
   "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
-  "compilerOptions": {
-    "target": "ES6",
-    "jsx": "react-jsx",
-    "moduleResolution": "node",
-    "types": ["react", "react-dom", "@tanstack/react-query"],
-    "noEmit": true,
-    "strict": true,
-    "allowSyntheticDefaultImports": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-  },
-  "include": [
-    "src/**/*"
-  ],
-  "paths" : {
-    "@/*" : ["./src/*"]
-  }
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }

@@ -86,7 +86,7 @@ const LoginPage = () => {
                 <button className={"login_btn"} onClick={() => handleLoginBtn()}>로그인</button>
                 <div className={"login_add_func"}>
                     <input id={"loginSaveChk"} className={"login_info_save_chk"} type={"checkbox"}
-                           onChange={(e) => setIsChecked(!isChecked)}/>
+                           onChange={() => setIsChecked(!isChecked)}/>
                     <label className={"login_info_save_label"} htmlFor={"loginSaveChk"}>로그인 유지</label>
                     <span className={"divide_line"}/>
                     <button className={"login_find_info_label"} onClick={() => setActiveModalType(LOGIN_MODAL.FIND)}>계정
